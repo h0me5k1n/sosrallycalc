@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SOS Rally Calculator</title>
+    <link rel="stylesheet" href={{url_for('static',filename='main.css')
+
+    }}>
+  </head>
+
+  <body>
+    <section class="calculator">
+      <h1>Rally Time Calculator</h1>
+      All times entered are HH:MM:SS
+      <br><br>
+
+      <form action="/calculate" method="POST">
+        <label for="Rally Lead One">Rally One Lead</label>
+        <input type="string" placeholder="Player1" value="{{ rally_lead_one_name }}" name="rally_lead_one_name" />
+        <label for="Rally One March Time">Rally One March Time</label>
+        <input type="time" min="00:00" max="00:59:59" step="1" placeholder="[hours]:[minutes]:[seconds]" value="{{ rally_one_march_time }}" name="rally_one_march_time" />
+        <label for="Rally One Duration">Rally Time</label>
+        <select name="rally_one_duration">
+          <option type="number" value="1" {{ opselect_rally1duration1 }}>1</option>
+          <option type="number" value="2" {{ opselect_rally1duration2 }}>2</option>
+          <option type="number" value="5" {{ opselect_rally1duration5 }}>5</option>
+          <option type="number" value="10" {{ opselect_rally1duration10 }}>10</option>
+          <option type="number" value="15" {{ opselect_rally1duration15 }}>15</option>
+        </select>
+        <br>
+
+        <label for="Rally Lead Two">Rally Two Lead</label>
+        <input type="string" placeholder="Player2" value="{{ rally_lead_two_name }}" name="rally_lead_two_name" />
+        <label for="Rally Two March Time">Rally Two March Time</label>
+        <input type="time" min="00:00" max="00:59:59" step="1" placeholder="[hours]:[minutes]:[seconds]" value="{{ rally_two_march_time }}" name="rally_two_march_time" />
+        <label for="Rally Two Duration">Rally Time</label>
+        <select name="rally_two_duration">
+          <option type="number" value="1" {{ opselect_rally2duration1 }}>1</option>
+          <option type="number" value="2" {{ opselect_rally2duration2 }}>2</option>
+          <option type="number" value="5" {{ opselect_rally2duration5 }}>5</option>
+          <option type="number" value="10" {{ opselect_rally2duration10 }}>10</option>
+          <option type="number" value="15" {{ opselect_rally2duration15 }}>15</option>
+        </select>
+        <br>
+
+        <label for="Rally Lead Three">Rally Three Lead</label>
+        <input type="string" placeholder="Player3" value="{{ rally_lead_three_name }}" name="rally_lead_three_name" />
+        <label for="Rally Three March Time">Rally Three March Time</label>
+        <input type="time" min="00:00" max="00:59:59" step="1" placeholder="[hours]:[minutes]:[seconds]" value="{{ rally_three_march_time }}" name="rally_three_march_time" />
+        <label for="Rally Three Duration">Rally Time</label>
+        <select name="rally_three_duration">
+          <option type="number" value="1" {{ opselect_rally3duration1 }}>1</option>
+          <option type="number" value="2" {{ opselect_rally3duration2 }}>2</option>
+          <option type="number" value="5" {{ opselect_rally3duration5 }}>5</option>
+          <option type="number" value="10" {{ opselect_rally3duration10 }}>10</option>
+          <option type="number" value="15" {{ opselect_rally3duration15 }}>15</option>
+        </select>
+        <br>
+
+        <label for="Operation">Operation</label>
+        <select name="operation">
+          <option value="toarrivaltime" {{ opselect_toarrivaltime }}>Calculate Starts From Arrival Time</option>
+          <option value="fromfirstrally" {{ opselect_fromfirstrally }}>Calculate From First Rally Start</option>
+        </select>
+        <br>
+
+        <label for="Rally Start/Arrival">Rally Start/Arrival</label>
+        <input type="time" min="00:00:00" max="23:59:59" step="1" placeholder="[hour]:[minute]:[second]" value="{{ rally_time }}" name="rally_time" />
+
+
+        <input type="submit" value="Calculate" id="calc_btn" class="btn" />
+
+        <h3>DESCRIPTION: {{ description }}</h3>
+        <h3>RESULT: {{ result }}</h3>
+
+        <br>
+        <button onclick="copyText()">Copy Chat Message</button>
+        <br />
+          
+        <script>
+            function copyText() {
+          
+                /* Copy text into clipboard */
+                navigator.clipboard.writeText
+                    ("{{ result }}");
+            }
+        </script>
+
+      </form>
+    </section>
+
+    <footer>
+      © 2022 <a href="https://github.com/h0me5k1n">h0me5k1n</a>
+    </footer>
+  </body>
+</html>
