@@ -133,7 +133,7 @@ def calculate():
         # generate the combined result
         description = 'for rallies to arrive at the same time when the first one starts at ' + v_rally_time.strftime('%H:%M:%S')
         result = result1 + result2 + result3
-        print(result)
+        print(operation + " (" + str(rally_one_start) + ") - " + result)
 
         return render_template("calculator.html", opselect_fromfirstrally=opselect_fromfirstrally, result=result, rally_lead_one_name=rally_lead_one_name, rally_one_march_time=rally_one_march_time, rally_lead_two_name=rally_lead_two_name, rally_two_march_time=rally_two_march_time, rally_lead_three_name=rally_lead_three_name, rally_three_march_time=rally_three_march_time, operation=operation, rally_time=rally_time, opselect_rally1duration5=opselect_rally1duration5, opselect_rally2duration5=opselect_rally2duration5, opselect_rally3duration5=opselect_rally3duration5, description=description)
 
@@ -171,7 +171,7 @@ def calculate():
         # generate the combined result
         description = 'for rallies to arrive at ' + v_rally_time.strftime('%H:%M:%S')
         result = result1 + result2 + result3
-        print(result)
+        print(operation + " (" + str(v_rally_time.strftime('%H:%M:%S')) + ") - " + result)
 
         return render_template("calculator.html", opselect_toarrivaltime=opselect_toarrivaltime, result=result, rally_lead_one_name=rally_lead_one_name, rally_one_march_time=rally_one_march_time, rally_lead_two_name=rally_lead_two_name, rally_two_march_time=rally_two_march_time, rally_lead_three_name=rally_lead_three_name, rally_three_march_time=rally_three_march_time, operation=operation, rally_time=rally_time, opselect_rally1duration5=opselect_rally1duration5, opselect_rally2duration5=opselect_rally2duration5, opselect_rally3duration5=opselect_rally3duration5, description=description)
 
