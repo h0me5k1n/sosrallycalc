@@ -25,7 +25,7 @@ resource "aws_instance" "sandbox" {
 LOGFILE=/home/ubuntu/activity.log
 # install pip
 sudo apt update
-sudo DEBIAN_FRONTEND=noninteractive apt install python3-pip python3-venv -y >> $LOGFILE
+sudo DEBIAN_FRONTEND=noninteractive apt install python3-pip python3-venv python3-flask -y >> $LOGFILE
 # cd folder
 cd /home/ubuntu
 # clone repo
@@ -34,10 +34,8 @@ git clone https://github.com/h0me5k1n/sosrallycalc.git >> $LOGFILE
 cd sosrallycalc
 # create environment
 python3 -m venv env;source env/bin/activate >> $LOGFILE
-# install dependencies
-pip install flask >> $LOGFILE
 # run app in background
-#nohup python3 -u sosrallycalc.py >> $LOGFILE 2>&1 &
+nohup python3 -u sosrallycalc.py >> $LOGFILE 2>&1 &
 
 EOF
 }
