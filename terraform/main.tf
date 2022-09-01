@@ -30,10 +30,14 @@ sudo DEBIAN_FRONTEND=noninteractive apt install python3-pip python3-venv python3
 cd /home/ubuntu
 # clone repo
 git clone https://github.com/h0me5k1n/sosrallycalc.git >> $LOGFILE
+# chmod repo
+sudo chown ubuntu:ubuntu sosrallycalc -R
 # cd repo
 cd sosrallycalc
 # create environment
 python3 -m venv env;source env/bin/activate >> $LOGFILE
+# pip flask
+pip install flask
 # run app in background
 nohup python3 -u sosrallycalc.py >> $LOGFILE 2>&1 &
 
