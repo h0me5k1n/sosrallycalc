@@ -35,9 +35,9 @@ cd sosrallycalc
 # create environment
 python3 -m venv env;source env/bin/activate >> $LOGFILE
 # install dependencies
-pip install -r requirements.txt >> $LOGFILE
+pip install flask >> $LOGFILE
 # run app in background
-nohup python3 -u app.py >> $LOGFILE 2>&1 &
+#nohup python3 -u sosrallycalc.py >> $LOGFILE 2>&1 &
 
 EOF
 }

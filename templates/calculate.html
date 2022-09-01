@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+    <title>Rally Calculator</title>
+    
+    <link rel="stylesheet" crossorigin="anonymous"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" >
+    
+	<script crossorigin="anonymous"
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" >
+	</script>
+
+</head>
+
+<body>
+    <h2>Rally Time Calculations</h2>
+    <a class="btn btn-primary" href="/">Rally Leads</a>
+    <form action="/calculate" method = "POST">
+        <label for="attacktarget">Attack Target </label>
+        <select name="attacktarget">
+            <option type="text" value="Center">Center</option>
+            <option type="text" value="North Tower">North Tower</option>
+            <option type="text" value="East Tower">East Tower</option>
+            <option type="text" value="South Tower">South Tower</option>
+            <option type="text" value="West Tower">West Tower</option>
+        </select>
+        <!-- <a class="btn btn-primary" href="calculate">Recalculate</a> -->
+
+        </br>
+        <div>
+            <label for="arrivaltime">Arrival Time </label>
+            <input type="time" min="00:00:00" max="23:59:59" step="1" class="form-control" name="arrivaltime" id="arrivaltime" value="{{ arrivaltime }}">
+            <button type="btnAdd" class="btn btn-primary">Recalculate</button>
+        </div>
+
+    </form>
+    </br>
+    <!-- {{ Description }}{{ CalculatedResult }} -->
+
+    <p id="copy">{{ Description }}{{ CalculatedResult }}</p>
+    <button type="button" class="btn btn-primary" onclick="copyEvent('copy')">Copy Chat Message</button>
+
+    <script>
+        function copyEvent(id)
+        {
+            var str = document.getElementById(id);
+            window.getSelection().selectAllChildren(str);
+            document.execCommand("Copy")
+        }
+    </script>
+
+</body>
