@@ -3,4 +3,6 @@
 *cfg
 **/env/
 **/__pycache__/
-terraform*
+terraform/*terraform*
+*terraform.tfstate
+*.DS_Store*

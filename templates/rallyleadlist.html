@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+    <title>Rally Lead List</title>
+    
+    <link rel="stylesheet" crossorigin="anonymous"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" >
+    
+	<script crossorigin="anonymous"
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" >
+	</script>
+
+</head>
+
+<body>
+    <h2>Rally Lead List</h2>
+    <a class="btn btn-primary" href="addrallylead">Add Rally Lead</a>
+    <a class="btn btn-primary" href="/">Refresh</a>
+    <form action="/calculate" method = "POST">
+        <label for="attacktarget">Attack Target </label>
+        <select name="attacktarget">
+            <option type="text" value="Center">Center</option>
+            <option type="text" value="North Tower">North Tower</option>
+            <option type="text" value="East Tower">East Tower</option>
+            <option type="text" value="South Tower">South Tower</option>
+            <option type="text" value="West Tower">West Tower</option>
+        </select>
+        <!-- <a class="btn btn-primary" href="calculate">Recalculate</a> -->
+
+        </br>
+        <div>
+            <label for="arrivaltime">Arrival Time </label>
+            <input type="time" min="00:00:00" max="23:59:59" step="1" class="form-control" name="arrivaltime" id="arrivaltime" value="{{ arrivaltime }}">
+            <button type="btnAdd" class="btn btn-primary">Calculate</button>
+        </div>
+
+    </form>
+
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">Player Name</th>
+            <th scope="col">Target</th>
+            <th scope="col">March Time</th>
+            <th scope="col">Rally Time (minutes)</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rally in rallies %}
+                <tr>
+                    <td>{{ rally.playername }}</td>
+                    <td>{{ rally.rallytarget }}</td>
+                    <td>{{ rally.marchtime }}</td>
+                    <td>{{ rally.rallytime }}</td>
+                    <td><a href='updaterallylead/{{ rally.id }}'>Edit</a></td>
+                    <td><a href='deleterallylead/{{ rally.id }}'>Delete</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+</body>
